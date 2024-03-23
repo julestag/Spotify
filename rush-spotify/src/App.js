@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Albums from './Albums.js';
 import Genres from './Genres.js';
 import Artists from './Artists.js';
+import RandomAlbums from './RandomAlbums.js';
 function App() {
   return (
     <Router>
@@ -18,6 +19,9 @@ function App() {
             <li>
               <a href="/artists">Artistes</a>
             </li>
+            <li>
+              <a href="/random">Random Albums</a>
+            </li>
           </ul>
         </nav>
 
@@ -25,7 +29,7 @@ function App() {
           <Route path="/albums" element={<Albums />} />
           <Route path="/genres" element={<Genres />} />
           <Route path="/artists" element={<Artists />} />
-
+          <Route path="/random" element={<RandomAlbums />} />
         </Routes>
       </div>
     </Router>
