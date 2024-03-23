@@ -3,6 +3,8 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Albums from './Albums';
 import Genres from './Genres';
 import Artists from './Artists';
+import Artistsdetails from './Artistsdetails';
+
 function App() {
   return (
     <Router>
@@ -18,6 +20,9 @@ function App() {
             <li>
               <a href="/artists">Artistes</a>
             </li>
+            <li>
+              <a href="/artistsdetails">Details artist</a>
+            </li>
           </ul>
         </nav>
 
@@ -25,6 +30,8 @@ function App() {
           <Route path="/albums" element={<Albums />} />
           <Route path="/genres" element={<Genres />} />
           <Route path="/artists" element={<Artists />} />
+          <Route path="/artistsdetails" element={<Artistsdetails />} />
+
 
         </Routes>
       </div>
