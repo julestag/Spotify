@@ -1,18 +1,35 @@
-// import logo from './logo.svg';
-// import './App.css';
-import { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 function App() {
-  let [albums, setAlbums] = useState([]);
+  const [albums, setAlbums] = useState([]);
+
   fetch("http://localhost:8000/albums")
-  .then(response => response.json())
-  .then(
-    data => {
+    .then(response => response.json())
+    .then(data => {
       setAlbums(data);
-  });  
+  })
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const albumsPerPage = 32;
+  const lastIndex = currentPage * albumsPerPage;
+  const firstIndex = lastIndex - albumsPerPage;
+  const currentAlbums = albums.slice(firstIndex, lastIndex);
+  const numberOfButtons = Math.ceil(albums.length / albumsPerPage);
+  const arrayButtons = [];
+  for(let i = 1; i<= numberOfButtons; i++){
+    arrayButtons.push(i);
+  }
   return (
-    <div className="albums">
-      {albums.map(album => <p>{album.name}</p>)}
+    <div className="app">
+      {currentAlbums.map(album => (
+          <p>{album.name}</p>
+      ))}
+      
+      <div>
+        {arrayButtons.map((index) => (
+          <button onClick={() => setCurrentPage(index)}>{index}</button>
+        ))}
+      </div>
     </div>
   );
 }
