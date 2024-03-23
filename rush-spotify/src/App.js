@@ -3,16 +3,20 @@
 import { useState } from 'react';
 
 function App() {
-  let [albums, setAlbums] = useState([]);
-  fetch("http://localhost:8000/albums")
+  let [artists, setArtists] = useState([]);
+  fetch("http://localhost:8000/artists")
   .then(response => response.json())
   .then(
     data => {
-      setAlbums(data);
+      setArtists(data);
   });  
   return (
-    <div className="albums">
-    <ul>{albums.map(albums => <li key={albums.id}> {albums.name} </li>)}</ul>
+    <div className="artistes">
+    <ul>{artists.map(artists => <li key={artists.id}>   
+              <h2>{artists.name}</h2>
+              <p>{artists.description}</p>
+              <p>{artists.bio}</p>
+              <img src={artists.photo} /></li>)}</ul>
     </div>
   );
 }
