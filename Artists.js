@@ -10,15 +10,29 @@ function Artists() {
         setArtists(data);
       });
   }, []);
-
+  const [currentPage, setCurrentPage] = useState(1);
+  const artistsPerPage = 32;
+  const lastIndex = currentPage * artistsPerPage;
+  const firstIndex = lastIndex - artistsPerPage;
+  const currentArtists = artists.slice(firstIndex, lastIndex);
+  const numberOfButtons = Math.ceil(artists.length / artistsPerPage);
+  const arrayButtons = [];
+  for(let i = 1; i<= numberOfButtons; i++){
+    arrayButtons.push(i);
+  }
   return (
     <div>
-      <h2>Artistes</h2>
+      <h2>Artists</h2>
       <ul>
-        {artists.map(artist => ( // Pour Artists On parcourt les donnée
-          <li key={artist.id}>{artist.name}</li> // Pour chaque clés trouvées(artist) ,pour chaque clé key=ID on affiche dans un li son name
-        ))}
+      {currentArtists.map(artists => (
+          <li key={artists.id}><a href="#">{artists.name}</a></li>
+      ))}
       </ul>
+      <div>
+        {arrayButtons.map((index) => (
+          <button key={index} onClick={() => setCurrentPage(index)}>{index}</button>
+        ))}
+      </div>
     </div>
   );
 }
