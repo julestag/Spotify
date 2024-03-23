@@ -22,7 +22,7 @@ function App() {
         </nav>
 
         <Routes>
-          <Route path="/albums" element={<Albums />} />
+        <Route path="/albums" element={<Albums />} />
           <Route path="/genres" element={<Genres />} />
           <Route path="/artists" element={<Artists />} />
 

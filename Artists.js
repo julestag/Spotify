@@ -16,7 +16,7 @@ function Artists() {
       <h2>Artistes</h2>
       <ul>
         {artists.map(artist => ( // Pour Artists On parcourt les donnée
-          <li key={artist.id}>{artist.name}</li> // Pour chaque clés trouvées(artist) ,pour chaque clé key=ID on affiche dans un li son name
+         <a href="#"><li key={artist.id}>{artist.name}</li></a>  // Pour chaque clés trouvées(artist) ,pour chaque clé key=ID on affiche dans un li son name
         ))}
       </ul>
     </div>

@@ -16,7 +16,7 @@ function Genres() {
       <h2>Genres</h2>
       <ul>
         {genres.map(genre => (
-          <li key={genre.id}>{genre.name}</li>
+        <a href="#"><li key={genre.id}>{genre.name}</li></a> 
         ))}
       </ul>
     </div>

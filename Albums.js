@@ -16,7 +16,7 @@ function Albums() {
       <h2>Albums</h2>
       <ul>
         {albums.map(album => (
-          <li key={album.id}>{album.name}</li>
+         <a href="#"><li key={album.id}>{album.name}</li></a>
         ))}
       </ul>
     </div>
