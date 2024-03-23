@@ -12,7 +12,7 @@ function App() {
   });  
   return (
     <div className="albums">
-      <p>{albums.map(album => album.name)}</p>
+      {albums.map(album => <p>{album.name}</p>)}
     </div>
   );
 }
