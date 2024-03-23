@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 function Artists() {
   const [artists, setArtists] = useState([]);
@@ -15,8 +16,10 @@ function Artists() {
     <div>
       <h2>Artistes</h2>
       <ul>
-        {artists.map(artist => ( // Pour Artists On parcourt les donnée
-         <a href="#"><li key={artist.id}>{artist.name}</li></a>  // Pour chaque clés trouvées(artist) ,pour chaque clé key=ID on affiche dans un li son name
+        {artists.map(artist => (
+          <li key={artist.id}>
+            <Link to={`/artist/${artist.id}`}>{artist.name}</Link> {/* Remplace le Href , au clic sur Le name , redirige vers /artist/et l'id artist */}
+          </li>
         ))}
       </ul>
     </div>

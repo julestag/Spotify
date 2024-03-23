@@ -3,6 +3,8 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Albums from './Albums';
 import Genres from './Genres';
 import Artists from './Artists';
+import ArtistDetails from './ArtistDetails';
+
 function App() {
   return (
     <Router>
@@ -22,10 +24,10 @@ function App() {
         </nav>
 
         <Routes>
-        <Route path="/albums" element={<Albums />} />
+          <Route path="/albums" element={<Albums />} />
           <Route path="/genres" element={<Genres />} />
           <Route path="/artists" element={<Artists />} />
-
+          <Route path="/artist/:id" element={<ArtistDetails />} />  {/* Associe le composant a l'id de l'url */} 
         </Routes>
       </div>
     </Router>
