@@ -3,9 +3,15 @@ import logo from './image/spotify.png';
 import albums from './image/albums.png';
 import artistes from './image/artistes.png';
 import genre from './image/genre.png'
-//import Recherche from './recherche'
-import {BrowserRouter as Router, Routes, Route, json} from "react-router-dom";
-import Home from './App.js'
+import Albums from './Albums.js';
+import Artists from './Artists.js';
+import Genres from './Genres';
+import RandomAlbums from './RandomAlbums.js';
+
+
+
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+
 
 import styles from './App.module.css';
 import { useState } from 'react';
@@ -13,16 +19,9 @@ import { useState } from 'react';
 function App() {
   const [album, setAlbum] = useState([]);
   const [filtre,setFiltre] = useState('');
+  const [divContent, setdivContent] = useState()
+  const [albums1, setAlbums] = useState([]);
 
-  // const changeFiltre = (e) =>{
-    
-  //   if(e.target.id ===  "Albums"){
-  //     const test = "http://localhost:8000/albums";
-  //     //etFiltre(test);
-  //   }
-  // }
- 
-  //const [searchTerm, setSearchTerm] = useState('');
 
   const changeValue =  (e) =>{
     
@@ -30,7 +29,6 @@ function App() {
       console.log(id)
 
        var test1 =  "http://localhost:8000/" + id;
-      //console.log(obj)
       setFiltre(test1)
       console.log(filtre)
 
@@ -45,13 +43,7 @@ function App() {
     fetch(id)
     .then(response => response.json())
     .then(data => {
-      //const json1 = data
-     //setAlbum(data)
      const {value} = e.target;
-    // setSearchTerm(value);
-      
-     // console.log(value);
-
 
      const filterData = (searchTerm) => {
       const album = data.filter((item) => item.name.toLowerCase().includes(searchTerm.toLowerCase()));
@@ -66,7 +58,29 @@ function App() {
   const [change,setchange] = useState()
   
   const menu = (e) => {
-    e.preventDefault()
+   //e.preventDefault()
+    var div = document.getElementById("div_select")
+    if(div == null){
+     return;
+    }
+    div.remove();
+     var element = e.target.parentElement;
+     console.log(element)
+   var name = element.getAttribute("id");
+   console.log(name)
+
+   var p = document.getElementById("where");
+   p.innerHTML = name;
+
+   
+
+  //  fetch("http://localhost:8000/" + e.target.parentElement.id.toLowerCase())
+  // .then(response => response.json())
+  // .then(
+  //   data => {
+  //     setAlbums(data);
+  // });  
+
   }
 
   const change_tabs = (e) => {
@@ -82,10 +96,6 @@ function App() {
 
     var p = document.getElementById("where");
     p.innerHTML = name;
-
-    // const handleFilter = (e) => {
-    //   setFilterValue(e.target.value);
-    // }
     
     setchange(
     <div>
@@ -101,15 +111,20 @@ function App() {
     </div>
     )
 
+
     
   }
   return (
+    <Router>
+
+    
           <div className={styles.div}>
       <div className={styles.menu}>
       <img src={logo} className={styles.size} alt="logo spotify"></img>
 
       <a href="@" className={styles.aMenu}>Accueil</a>
       <a href="/recherche" className={styles.aMenu} id="Recherche" onClick={change_tabs}>Recherche</a>
+      <a href="/random" className={styles.aMenu}>Suggestions</a>
       <hr className={styles.hr}></hr>
       </div>
 
@@ -119,9 +134,9 @@ function App() {
       </div>
       
       <div className={styles.divSelect} id="div_select">
-        <a href="@" id="Genre"><img src={genre} alt="genre"  className={styles.imgSelect} onClick={menu}></img></a>
-        <a href="@" id="Artistes"><img src={artistes} alt="artistes" className={styles.imgSelect} onClick={menu}></img></a>
-        <a href="@" id="Albums"><img src={albums} alt="albums" className={styles.imgSelect} onClick={menu}></img></a>
+        <a href="/genres" id="Genres"><img src={genre} alt="genre"  className={styles.imgSelect} onClick={menu}></img></a>
+        <a href="/artists" id="Artists"><img src={artistes} alt="artistes" className={styles.imgSelect} onClick={menu}></img></a>
+        <a href="/albums" id="Albums"><img src={albums} alt="albums" className={styles.imgSelect} onClick={menu}></img></a>
       </div>
 
       <div>
@@ -130,8 +145,19 @@ function App() {
           <p className={styles.filteredResult}>{album.name}</p>
       ))}
       </div>
-    </div>
 
+      <div>
+      <p className={styles.filteredResult}>{albums1.map(album1 => album1.name)}</p>
+      </div>
+        
+      <Routes>
+          <Route path="/albums" element={<Albums />} />
+          <Route path="/genres" element={<Genres />} />
+          <Route path="/artists" element={<Artists />} />
+          <Route path="/random" element={<RandomAlbums />} />
+        </Routes>
+    </div>
+  </Router>
   );
  
 }

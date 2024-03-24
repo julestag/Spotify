@@ -55,3 +55,8 @@ body{
   color: white;
   
 }
+.divContent{
+  display: flex;
+  margin-left: 22rem;
+  flex-direction: column;
+}
