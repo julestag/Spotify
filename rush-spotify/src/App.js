@@ -9,6 +9,8 @@ import Genres from './Genres';
 import RandomAlbums from './RandomAlbums.js';
 import AlbumDetails from './AlbumD';
 import ArtistDetails from './ArtistDetails';
+import menumobile from './image/menu.png';
+import croix from './image/croix.png'
 
 
 
@@ -115,20 +117,80 @@ function App() {
     )
 
 
+ 
+  }
+
+  const slide = () =>{
+    var accueil = document.getElementById("accueil");
+    var recherche1 = document.getElementById("Recherche");
+    var sugges = document.getElementById("sugges");
+    var slide = document.getElementById("slideMenu");
+    var croix_close = document.getElementById("croix");
+
     
+    accueil.style.display = "block";
+    recherche1.style.display = "block";
+    sugges.style.display = "block";
+    croix_close.style.display = "block"
+    slide.style.display = "none";
+    window.setTimeout(function(){
+      accueil.style.opacity = 1;
+      accueil.style.transform = 'scale(1)';
+      recherche1.style.opacity = 1;
+    recherche1.style.transform = 'scale(1)';    
+    sugges.style.opacity = 1;
+    sugges.style.transform = 'scale(1)';   
+    },0);
+    // accueil.style.opacity = 1;
+    // accueil.style.transform = 'scale(1)';
+    
+
+    
+    
+    
+  } 
+
+  const close_menu = () => {
+    var accueil = document.getElementById("accueil");
+    var recherche1 = document.getElementById("Recherche");
+    var sugges = document.getElementById("sugges");
+    var slide = document.getElementById("slideMenu");
+    var croix_close = document.getElementById("croix");
+
+    accueil.style.opacity = 0;
+    accueil.style.transform = 'scale(0)';
+    recherche1.style.opacity = 0;
+    recherche1.style.transform = 'scale(0)';
+    recherche1.style.opacity = 0;
+    recherche1.style.transform = 'scale(0)';
+    sugges.style.opacity = 0;
+    sugges.style.transform = 'scale(0)';
+
+    window.setTimeout(function(){
+      accueil.style.display = "none";
+      recherche1.style.display = "none";
+      sugges.style.display = "none";
+      croix_close.style.display = "none";
+      slide.style.display = "block";
+    },500);
+    
+   
+
   }
   return (
     <Router>
 
     
           <div className={styles.div}>
+          
       <div className={styles.menu}>
-      <img src={logo} className={styles.size} alt="logo spotify"></img>
+      <img src={croix} alt="croix fermeture" className={styles.croix} id="croix" onClick={close_menu}></img>
+      <img src={menumobile} alt='Menu mobile' className={styles.mobilemenu} id="slideMenu" onClick={slide}></img>
+      <img src={logo} className={styles.size} alt="logo spotify" id="spotify"></img>
 
-      <a href="/" className={styles.aMenu}>Accueil</a>
+      <a href="/" className={styles.aMenu} id="accueil">Accueil</a>
       <a href="/recherche" className={styles.aMenu} id="Recherche" onClick={change_tabs}>Recherche</a>
-      <a href="/random" className={styles.aMenu}>Suggestions</a>
-      <hr className={styles.hr}></hr>
+      <a href="/random" className={styles.aMenu} id="sugges">Suggestions</a>
       </div>
 
 

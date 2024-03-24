@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styles from './App.module.css';
-
+import { Link } from 'react-router-dom';
 
 function RandomAlbums() {
   const [randomAlbums, setRandomAlbums] = useState([]);
@@ -43,7 +43,7 @@ function RandomAlbums() {
       <ul style={{ listStyle: 'none'}} className={styles.filteredResult}>
         {randomAlbums.map(album => (
           <li key={album.id} style={{ marginBottom: '10px' }}>
-            <p className={styles.filteredResult}>{album.name}</p>
+            <p key={album.id} className={styles.filteredResult}><Link key={album.id} to={`/albums/${album.id}` } className={styles.filteredResult}>{album.name}</Link></p>
             <img src={album.cover} alt={album.name} style={{ width: '200px', height: 'auto' }} />
           </li>
         ))}
