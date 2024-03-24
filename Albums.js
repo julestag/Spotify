@@ -1,4 +1,6 @@
+
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 function Albums() {
   const [albums, setAlbums] = useState([]);
@@ -10,6 +12,7 @@ function Albums() {
         setAlbums(data);
       });
   }, []);
+
   const [currentPage, setCurrentPage] = useState(1);
   const albumsPerPage = 32;
   const lastIndex = currentPage * albumsPerPage;
@@ -20,12 +23,13 @@ function Albums() {
   for(let i = 1; i<= numberOfButtons; i++){
     arrayButtons.push(i);
   }
+
   return (
     <div>
       <h2>Albums</h2>
       <ul>
       {currentAlbums.map(album => (
-          <li key={album.id}><a href="#">{album.name}</a></li>
+            <p key={album.id}><Link key={album.id} to={`/albums/${album.id}`}>{album.name}</Link></p> /* Remplace le Href , au clic sur Le name , redirige vers /artist/et l'id artist */
       ))}
       </ul>
       <div>

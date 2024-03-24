@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 function Artists() {
   const [artists, setArtists] = useState([]);
@@ -22,10 +23,10 @@ function Artists() {
   }
   return (
     <div>
-      <h2>Artists</h2>
+      <h2>Albums</h2>
       <ul>
-      {currentArtists.map(artists => (
-          <li key={artists.id}><a href="#">{artists.name}</a></li>
+      {currentArtists.map(artist => (
+            <p key={artist.id}><Link key={artist.id} to={`/artists/${artist.id}`}>{artist.name}</Link></p> /* Remplace le Href , au clic sur Le name , redirige vers /artist/et l'id artist */
       ))}
       </ul>
       <div>
