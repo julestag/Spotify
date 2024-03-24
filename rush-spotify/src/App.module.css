@@ -45,3 +45,13 @@ body{
   width: 70%;
   height: 100%;
 }
+.search{
+  width: 15rem;
+  padding: 0.5rem;
+  border-radius: 1rem;
+  outline: none;
+}
+.filteredResult{
+  color: white;
+  
+}
