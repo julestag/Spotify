@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import styles from './App.module.css';
 
 
@@ -31,11 +32,12 @@ function Artists() {
   )
   var p = document.getElementById("where");
     p.innerHTML = "Artists";
+
   return (
     <div className={styles.divContent}>
       <ul className={styles.filteredResult}>
-      {currentArtists.map(artists => (
-          <li key={artists.id} className={styles.filteredResult}><a href="#">{artists.name}</a></li>
+      {currentArtists.map(artist => (
+            <p className={styles.filteredResult} key={artist.id}><Link key={artist.id} to={`/artists/${artist.id}`}  className={styles.filteredResult}>{artist.name}</Link></p> /* Remplace le Href , au clic sur Le name , redirige vers /artist/et l'id artist */
       ))}
       </ul>
       <div>

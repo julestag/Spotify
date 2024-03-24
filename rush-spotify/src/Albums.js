@@ -1,4 +1,6 @@
+
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import styles from './App.module.css';
 
 
@@ -12,6 +14,7 @@ function Albums() {
         setAlbums(data);
       });
   }, []);
+
   const [currentPage, setCurrentPage] = useState(1);
   const albumsPerPage = 32;
   const lastIndex = currentPage * albumsPerPage;
@@ -22,8 +25,6 @@ function Albums() {
   for(let i = 1; i<= numberOfButtons; i++){
     arrayButtons.push(i);
   }
-
-
   var div = document.getElementById("div_select")
   if(div == null){
    return;
@@ -32,11 +33,12 @@ function Albums() {
   )
   var p = document.getElementById("where");
     p.innerHTML = "Albums";
+
   return (
-    <div className={styles.divContent}>
+    <div  className={styles.divContent}>
       <ul className={styles.filteredResult}>
       {currentAlbums.map(album => (
-          <li key={album.id} className={styles.filteredResult}><a href="#">{album.name}</a></li>
+            <p key={album.id} className={styles.filteredResult}><Link key={album.id} to={`/albums/${album.id}` }  className={styles.filteredResult}>{album.name}</Link></p> /* Remplace le Href , au clic sur Le name , redirige vers /artist/et l'id artist */
       ))}
       </ul>
       <div>

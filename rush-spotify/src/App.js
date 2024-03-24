@@ -7,6 +7,9 @@ import Albums from './Albums.js';
 import Artists from './Artists.js';
 import Genres from './Genres';
 import RandomAlbums from './RandomAlbums.js';
+import AlbumDetails from './AlbumD';
+import ArtistDetails from './ArtistDetails';
+
 
 
 
@@ -101,13 +104,13 @@ function App() {
     <div>
        <input type="text" id="input_search" data="input" className={styles.search} placeholder='Search' onChange={filterFetch}></input><br></br>
        <input type="radio" id="albums" onChange={changeValue} name="filtre"></input>
-       <label for="albums" className={styles.filteredResult} >Albums</label>
+       <label className={styles.filteredResult} >Albums</label>
 
        <input type="radio" id="genres" onChange={changeValue} name="filtre"></input>
-       <label for="genres"  className={styles.filteredResult}>Genre</label>
+       <label className={styles.filteredResult}>Genre</label>
 
        <input type="radio" id="artists" onChange={changeValue} name="filtre"></input>
-       <label for="artists" className={styles.filteredResult}>Artiste</label>
+       <label  className={styles.filteredResult}>Artiste</label>
     </div>
     )
 
@@ -122,7 +125,7 @@ function App() {
       <div className={styles.menu}>
       <img src={logo} className={styles.size} alt="logo spotify"></img>
 
-      <a href="@" className={styles.aMenu}>Accueil</a>
+      <a href="/" className={styles.aMenu}>Accueil</a>
       <a href="/recherche" className={styles.aMenu} id="Recherche" onClick={change_tabs}>Recherche</a>
       <a href="/random" className={styles.aMenu}>Suggestions</a>
       <hr className={styles.hr}></hr>
@@ -155,6 +158,8 @@ function App() {
           <Route path="/genres" element={<Genres />} />
           <Route path="/artists" element={<Artists />} />
           <Route path="/random" element={<RandomAlbums />} />
+          <Route path="/albums/:id" element={<AlbumDetails />} />
+          <Route path="/artists/:id" element={<ArtistDetails />} />
         </Routes>
     </div>
   </Router>
