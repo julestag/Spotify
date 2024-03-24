@@ -4,6 +4,8 @@ import Albums from './Albums';
 import Genres from './Genres';
 import Artists from './Artists';
 import ArtistDetails from './ArtistDetails';
+import AlbumDetails from './AlbumD';
+import GenreDetails from './GenreD';
 
 function App() {
   return (
@@ -27,7 +29,9 @@ function App() {
           <Route path="/albums" element={<Albums />} />
           <Route path="/genres" element={<Genres />} />
           <Route path="/artists" element={<Artists />} />
-          <Route path="/artist/:id" element={<ArtistDetails />} />  {/* Associe le composant a l'id de l'url */} 
+          <Route path="/artist/:id" element={<ArtistDetails />} />
+          <Route path="/albums/:id" element={<AlbumDetails />} />
+          <Route path="/genres/:id" element={<GenreDetails />} />
         </Routes>
       </div>
     </Router>
