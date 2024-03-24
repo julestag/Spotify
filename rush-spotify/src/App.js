@@ -12,7 +12,7 @@ import { useState } from 'react';
 
 function App() {
   const [album, setAlbum] = useState([]);
- // const [filtre,setFiltre] = useState('');
+  const [filtre,setFiltre] = useState('');
 
   // const changeFiltre = (e) =>{
     
@@ -24,9 +24,25 @@ function App() {
  
   //const [searchTerm, setSearchTerm] = useState('');
 
+  const changeValue =  (e) =>{
+    
+      var id = e.target.id
+      console.log(id)
+
+       var test1 =  "http://localhost:8000/" + id;
+      //console.log(obj)
+      setFiltre(test1)
+      console.log(filtre)
+
+      var input = document.querySelector("[data=input]")
+      input.id = test1;
+  }
+
   const filterFetch = (e) =>{
-   
-    fetch("http://localhost:8000/albums")
+   var id = e.target.id;
+  console.log(e.target);
+    console.log(filtre);
+    fetch(id)
     .then(response => response.json())
     .then(data => {
       //const json1 = data
@@ -73,18 +89,16 @@ function App() {
     
     setchange(
     <div>
-       <input type="text"  className={styles.search} placeholder='Search' onChange={filterFetch}></input><br></br>
-       <input type="checkbox" id="Albums" onChange={filterFetch}></input>
-       <label for="Albums" className={styles.filteredResult}>Albums</label>
+       <input type="text" id="input_search" data="input" className={styles.search} placeholder='Search' onChange={filterFetch}></input><br></br>
+       <input type="radio" id="albums" onChange={changeValue} name="filtre"></input>
+       <label for="albums" className={styles.filteredResult} >Albums</label>
 
-       <input type="checkbox" id="Genre"></input>
-       <label for="Genre"  className={styles.filteredResult}>Genre</label>
+       <input type="radio" id="genres" onChange={changeValue} name="filtre"></input>
+       <label for="genres"  className={styles.filteredResult}>Genre</label>
 
-       <input type="checkbox" id="Artiste"></input>
-       <label for="Artiste" className={styles.filteredResult}>Artiste</label>
+       <input type="radio" id="artists" onChange={changeValue} name="filtre"></input>
+       <label for="artists" className={styles.filteredResult}>Artiste</label>
     </div>
-   
-       
     )
 
     
