@@ -24,9 +24,11 @@ function AlbumDetails() {
 
     return ( // SI presence d'album affiche la div 
         <div>
-            <h2>{album.name}</h2> {/* ?? */}
-
+            <h2>{album.album.name}</h2>
+            <img src={album.cover} alt={album.name} />
             <p>Nombre de titre: {album.tracks.length}</p>
+            <p>{album.mp3}</p>
+            <a href={album.cover} ></a>
             <ul>
                 {album.tracks.map(track => ( // map les Tracks a track pour sortir les clef name et sa durée
                     <li key={track.id}>

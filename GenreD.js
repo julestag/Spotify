@@ -24,15 +24,11 @@ function GenreDetails() {
 
     return ( // SI presence d'album affiche la div 
         <div>
-            <h1>ok</h1>
-            <h2>{genre.name}</h2> {/* ?? */}
+            <h2>{genre.genre.name}</h2> {/* ?? */}
             <p>Nombre d'albums : {genre.albums.length}</p>
-            {genre.albums.map(album => (
-                <li key={genre.id}>
-                    Album {album}
-                </li>
-            )
-            )}
+           
+            
+            
         </div>
     );
 }
