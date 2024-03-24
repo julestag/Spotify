@@ -36,12 +36,12 @@ function Albums() {
 
   return (
     <div  className={styles.divContent}>
-      <ul className={styles.filteredResult}>
+      <ul className={styles.ul}>
       {currentAlbums.map(album => (
             <p key={album.id} className={styles.filteredResult}><Link key={album.id} to={`/albums/${album.id}` }  className={styles.filteredResult}>{album.name}</Link></p> /* Remplace le Href , au clic sur Le name , redirige vers /artist/et l'id artist */
       ))}
       </ul>
-      <div>
+      <div className={styles.button_album}>
         {arrayButtons.map((index) => (
           <button key={index} onClick={() => setCurrentPage(index)}>{index}</button>
         ))}

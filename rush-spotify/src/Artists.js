@@ -40,7 +40,7 @@ function Artists() {
             <p className={styles.filteredResult} key={artist.id}><Link key={artist.id} to={`/artists/${artist.id}`}  className={styles.filteredResult}>{artist.name}</Link></p> /* Remplace le Href , au clic sur Le name , redirige vers /artist/et l'id artist */
       ))}
       </ul>
-      <div>
+      <div className={styles.button}>
         {arrayButtons.map((index) => (
           <button key={index} onClick={() => setCurrentPage(index)}>{index}</button>
         ))}

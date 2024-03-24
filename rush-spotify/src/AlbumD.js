@@ -29,7 +29,7 @@ function AlbumDetails() {
         <h2  className={styles.filteredResult}>{album.album.name}</h2> {/* ?? */}
         <p  className={styles.filteredResult}>id de l'artiste : {album.album.artist_id}</p>
     <p  className={styles.filteredResult}>{album.album.description}</p>
-    <img src={album.album.cover} alt={album.album.name} />
+    <img src={album.album.cover} alt={album.album.name} style={{ width: '500px', height: 'auto' }} />
     <p  className={styles.filteredResult}>date de sortie : {album.album.release_date}</p>
     <p  className={styles.filteredResult}>Rangs de popularité : {album.album.popularity}</p>
         <p  className={styles.filteredResult}> Nombre de titre: {album.tracks.length}</p>

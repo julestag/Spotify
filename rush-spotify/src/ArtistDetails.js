@@ -21,7 +21,7 @@ function ArtistDetails() {
   return (
     <div  className={styles.divContent}>
       <h2 className={styles.filteredResult}>{artist.name}</h2>
-      <img src={artist.photo} alt={artist.name} />
+      <img src={artist.photo} alt={artist.name} style={{ width: '500px', height: 'auto' }} />
       <p className={styles.filteredResult}>Description : {artist.description}</p>
       <p className={styles.filteredResult}>Bio : {artist.bio}</p>
     </div>
