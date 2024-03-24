@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 function Albums() {
   const [albums, setAlbums] = useState([]);
@@ -16,7 +17,9 @@ function Albums() {
       <h2>Albums</h2>
       <ul>
         {albums.map(album => (
-         <a href="#"><li key={album.id}>{album.name}</li></a>
+          <li key={album.id}>
+            <Link to={`/albums/${album.id}`}>{album.name}</Link> {/* Remplace le Href , au clic sur Le name , redirige vers /artist/et l'id artist */}
+          </li>
         ))}
       </ul>
     </div>
