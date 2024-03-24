@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import styles from './App.module.css';
+import { Link } from 'react-router-dom';
 
 function Genres() {
   const [genres, setGenres] = useState([]);
@@ -11,12 +13,19 @@ function Genres() {
       });
   }, []);
 
+  var div = document.getElementById("div_select")
+  if(div == null){
+   return;
+  }else(
+    div.innerHTML = ""
+  )
+  var p = document.getElementById("where");
+    p.innerHTML = "Genres";
   return (
-    <div>
-      <h2>Genres</h2>
-      <ul>
+    <div className={styles.divContent}>
+      <ul className={styles.filteredResult}>
         {genres.map(genre => (
-          <li key={genre.id}>{genre.name}</li>
+          <li key={genre.id}  className={styles.filteredResult}> <Link key={genre.id} to={`/genres/${genre.id}`}>{genre.name}</Link></li>
         ))}
       </ul>
     </div>
